@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4N0X8knTYoM=",
+  "dgSpecHash": "/Oin1E0nxBA=",
   "success": true,
-  "projectFilePath": "D:\\0zed\\RocketLeagueMod\\callibrator\\Callibrator.csproj",
+  "projectFilePath": "D:\\0zed\\RocketLeagueMod\\Calibrator\\Callibrator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Home\\.nuget\\packages\\hidsharp\\2.6.4\\hidsharp.2.6.4.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.8\\microsoft.extensions.dependencyinjection.abstractions.10.0.8.nupkg.sha512",

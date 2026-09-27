@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\0zed\\RocketLeagueMod\\callibrator\\Callibrator.csproj": {}
+    "D:\\0zed\\RocketLeagueMod\\Calibrator\\Callibrator.csproj": {}
   },
   "projects": {
-    "D:\\0zed\\RocketLeagueMod\\callibrator\\Callibrator.csproj": {
+    "D:\\0zed\\RocketLeagueMod\\Calibrator\\Callibrator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0zed\\RocketLeagueMod\\callibrator\\Callibrator.csproj",
+        "projectUniqueName": "D:\\0zed\\RocketLeagueMod\\Calibrator\\Callibrator.csproj",
         "projectName": "Callibrator",
-        "projectPath": "D:\\0zed\\RocketLeagueMod\\callibrator\\Callibrator.csproj",
+        "projectPath": "D:\\0zed\\RocketLeagueMod\\Calibrator\\Callibrator.csproj",
         "packagesPath": "C:\\Users\\Home\\.nuget\\packages\\",
-        "outputPath": "D:\\0zed\\RocketLeagueMod\\callibrator\\obj\\",
+        "outputPath": "D:\\0zed\\RocketLeagueMod\\Calibrator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Home\\AppData\\Roaming\\NuGet\\NuGet.Config"
