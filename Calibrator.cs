@@ -4,14 +4,13 @@ namespace Calibrator.Devices;
 
 public class DeviceManager
 {
-    List<HidDevice>? deviceSet;
+    List<HidDevice>? deviceSet = new List<HidDevice>();
+    public List<String>? deviceNames  = new List<String>();
 
     public List<HidDevice> GetDevices()
     {
-        deviceSet = new List<HidDevice>();
         IEnumerable<HidDevice> allDevices = DeviceList.Local.GetHidDevices();
 
-        List<String> deviceNames = new List<String>();
         List<String> paths = new List<String>();
 
         Console.WriteLine("Devices:");
@@ -21,12 +20,13 @@ public class DeviceManager
             try { name = device.GetProductName(); }
             catch { name = "(unknown)"; }
 
-            if (deviceNames.Contains(name.ToLower())) continue;
-            deviceSet.Add(device);
+            if (name == "") continue;
+            if (deviceNames!.Contains(name.ToLower())) continue;
+            deviceSet!.Add(device);
             deviceNames.Add(name.ToLower());
             paths.Add(device.DevicePath);
         }
 
-        return deviceSet;
+        return deviceSet!;
     }
 }
