@@ -1,12 +1,15 @@
 ﻿using Calibrator.Devices;
+using Calibrator.GUI;
 using HidSharp;
 
 DeviceManager deviceManager = new DeviceManager();
-List<HidDevice> deviceSet = deviceManager.GetDevices();
+GUI gui = new GUI();
 
 void Main()
 {
+    List<HidDevice> deviceSet = deviceManager.GetDevices();
     WriteDevices(deviceSet);
+    gui.StartUI();
 }
 
 void WriteDevices(List<HidDevice> devices)
