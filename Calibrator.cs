@@ -6,7 +6,7 @@ public class DeviceManager
 {
     List<HidDevice>? deviceSet;
 
-    public void GetDevices()
+    public List<HidDevice> GetDevices()
     {
         deviceSet = new List<HidDevice>();
         IEnumerable<HidDevice> allDevices = DeviceList.Local.GetHidDevices();
@@ -15,7 +15,6 @@ public class DeviceManager
         List<String> paths = new List<String>();
 
         Console.WriteLine("Devices:");
-        int deviceNum = 1;
         foreach (HidDevice device in allDevices)
         {
             string name;
@@ -26,9 +25,8 @@ public class DeviceManager
             deviceSet.Add(device);
             deviceNames.Add(name.ToLower());
             paths.Add(device.DevicePath);
-
-            Console.WriteLine($"    {deviceNum}: {device.GetProductName()} - {device.DevicePath}");
-            deviceNum++;
         }
+
+        return deviceSet;
     }
 }

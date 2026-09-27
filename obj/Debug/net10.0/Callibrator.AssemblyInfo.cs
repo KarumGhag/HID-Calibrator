@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Callibrator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+66e0d4c53eb3bdcfa714ca2f86c14dc72e057962")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d3aef40754113d12279051cac8de8d28b6830f6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Callibrator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Callibrator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
