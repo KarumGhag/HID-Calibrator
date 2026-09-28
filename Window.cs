@@ -12,9 +12,9 @@ public sealed class AppWindow : IDisposable
     public readonly int monitorHeight;
 
 
-    public AppWindow()
+    public AppWindow(String programName)
     {
-        Raylib.InitWindow(1920, 1080, "HID Calibrator");
+        Raylib.InitWindow(1920, 1080, programName);
         Raylib.SetWindowState(ConfigFlags.UndecoratedWindow);
         Raylib.SetWindowSize(monitorWidth, monitorHeight);
 

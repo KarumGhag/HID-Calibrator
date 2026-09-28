@@ -59,7 +59,7 @@ public class SelectDeviceScreen : Screen
         for (int i = 0; i < deviceNames.Count; i++)
         {
             int x = centerX - (Raylib.MeasureText(deviceNames[i], fontSize) / 2);
-            currentY += spacing * i;
+            currentY += spacing;
             Color colour = i == selectedInt ? Color.Green : Color.White;
             Raylib.DrawText(deviceNames[i], x, currentY, fontSize, colour);
         }

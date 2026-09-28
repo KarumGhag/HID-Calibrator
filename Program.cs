@@ -1,13 +1,9 @@
 ﻿using Calibrator.Devices;
-using Calibrator.GUI;
 using HidSharp;
-using Calibrator.Window;
 using Calibrator.App;
 
 
 DeviceManager deviceManager = new DeviceManager();
-GUI gui = new GUI();
-
 
 void Main()
 {
