@@ -9,7 +9,7 @@ void Main()
 {
     List<HidDevice> deviceSet = deviceManager.GetDevices();
     WriteDevices(deviceSet);
-    gui.UpdateDevices(deviceSet);
+    gui.SetDevices(deviceSet);
     gui.StartUI();
 }
 

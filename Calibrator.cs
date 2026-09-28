@@ -4,14 +4,14 @@ namespace Calibrator.Devices;
 
 public class DeviceManager
 {
-    List<HidDevice>? deviceSet = new List<HidDevice>();
-    public List<String>? deviceNames  = new List<String>();
+    readonly List<HidDevice> deviceSet = new List<HidDevice>();
+    readonly List<String> deviceNames = new List<String>();
+    readonly List<String> paths = new List<String>();
 
     public List<HidDevice> GetDevices()
     {
         IEnumerable<HidDevice> allDevices = DeviceList.Local.GetHidDevices();
 
-        List<String> paths = new List<String>();
 
         Console.WriteLine("Devices:");
         foreach (HidDevice device in allDevices)
