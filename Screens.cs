@@ -30,8 +30,9 @@ public class SelectDeviceScreen : Screen
     readonly int centerX;
     readonly int firstY;
 
-    public SelectDeviceScreen(int monitorWidth, int monitorHeight)
+    public SelectDeviceScreen(DeviceManager manager, int monitorWidth, int monitorHeight)
     {
+        this.manager = manager;
         if (manager!.deviceSet.Count == 0) throw new("No HID devices connected!");
 
         selectedDevice = manager.deviceSet[0];
