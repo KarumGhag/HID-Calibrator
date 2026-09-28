@@ -4,7 +4,7 @@ namespace Calibrator.Devices;
 
 public class DeviceManager
 {
-    readonly List<HidDevice> deviceSet = new List<HidDevice>();
+    public readonly List<HidDevice> deviceSet = new List<HidDevice>();
     readonly List<String> deviceNames = new List<String>();
     readonly List<String> paths = new List<String>();
 
