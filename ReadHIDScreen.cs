@@ -13,18 +13,40 @@ public class ReadInputScreen : Screen
     HidDevice? selectedDevice;
 
     string? incoming;
+    HidStream stream;
 
     public ReadInputScreen(HidDevice device)
     {
         selectedDevice = device;
+        try
+        {
+            stream = selectedDevice!.Open();
+        }
+        catch
+        {
+            Console.WriteLine("stream failed");
+        }
+
+
     }
 
     public void Update()
     {
-        HidStream stream = selectedDevice!.Open();
-        byte[] buffer = new byte[selectedDevice.GetMaxInputReportLength()];
-        int bytesRead = stream.Read(buffer, 0, buffer.Length);
-        incoming = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
+        if (stream == null) return;
+
+        byte[] buffer = new byte[selectedDevice!.GetMaxInputReportLength()];
+        try
+        {
+            int bytesRead = stream.Read(buffer, 0, buffer.Length);
+            if (bytesRead == 0) return;
+            incoming = BitConverter.ToString(buffer, 0, bytesRead);
+        }
+        catch (TimeoutException)
+        {
+            Console.WriteLine("timeout");
+            return;
+        }
+
     }
 
     public void Draw()
