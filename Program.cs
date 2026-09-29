@@ -23,4 +23,9 @@ void WriteDevices(List<HidDevice> devices)
     }
 }
 
+void Test()
+{
+
+}
+
 Main();

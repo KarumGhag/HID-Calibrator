@@ -15,6 +15,8 @@ public class ReadInputScreen : Screen
     string? incoming;
     HidStream stream;
 
+    int textLen;
+
     public ReadInputScreen(HidDevice device)
     {
         selectedDevice = device;
@@ -24,10 +26,14 @@ public class ReadInputScreen : Screen
         }
         catch
         {
-            Console.WriteLine("stream failed");
+            throw new("stream failed");
         }
 
+        int maxReportLength = selectedDevice.GetMaxInputReportLength();
+        string longestText = "";
+        for (int i = 0; i < maxReportLength; i++) longestText += "0";
 
+        textLen = Raylib.MeasureText(longestText, 35);
     }
 
     public void Update()
@@ -46,13 +52,11 @@ public class ReadInputScreen : Screen
             Console.WriteLine("timeout");
             return;
         }
-
     }
 
     public void Draw()
     {
-        int textLen = Raylib.MeasureText(incoming, 35);
-        Raylib.DrawText(incoming, 1920 / 2 - textLen / 2, 1080 / 2, 35, Color.White);
+        Raylib.DrawText(incoming, 1920 / 2 - textLen, 1080 / 2, 35, Color.White);
     }
 
     public void NextScreen() {}
