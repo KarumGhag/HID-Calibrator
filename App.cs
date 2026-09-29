@@ -33,9 +33,13 @@ public static class App
             currentScreen.Update();
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.Black);
+
             Raylib.DrawText(programName, (int)nameDrawPos.X, (int)nameDrawPos.Y, nameFontSize, Color.White);
             Raylib.DrawLineEx(lineStartPos, lineEndPos, underLineThickness, Color.White);
+
             currentScreen.Draw();
+
+            if (currentScreen.nextScreen != null) currentScreen = currentScreen.nextScreen;
             Raylib.EndDrawing();
         }
     }

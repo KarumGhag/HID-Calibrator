@@ -8,6 +8,8 @@ public class DeviceManager
     readonly List<String> deviceNames = new List<String>();
     readonly List<String> paths = new List<String>();
 
+    public HidDevice selectedDevice;
+
     public List<HidDevice> GetDevices()
     {
         IEnumerable<HidDevice> allDevices = DeviceList.Local.GetHidDevices();
