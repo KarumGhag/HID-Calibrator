@@ -4,6 +4,7 @@ using System.Text;
 using Raylib_cs;
 using Calibrator.Screens;
 using Calibrator.Devices;
+using System.IO.Pipes;
 
 namespace Calibrator.ReadHidScreen;
 
@@ -16,9 +17,13 @@ public class ReadInputScreen : Screen
     string[] incomingList;
     int incomingLen;
 
-    HidStream stream;
+    readonly HidStream stream;
 
-    int textLen;
+    readonly int textLen;
+
+    readonly int fontSize = 35;
+    readonly int centerX = 1920 / 2;
+    readonly int centerY = 1080 / 2;
 
     public ReadInputScreen(HidDevice device)
     {
@@ -32,7 +37,7 @@ public class ReadInputScreen : Screen
             throw new("stream failed");
         }
 
-        textLen = Raylib.MeasureText("  FF  ", 35);
+        textLen = Raylib.MeasureText("  FF  ", fontSize);
     }
 
 //   FF       FF       FF       FF       FF       FF       FF       FF       FF       FF       FF
@@ -60,16 +65,38 @@ public class ReadInputScreen : Screen
 
     public void Draw()
     {
-        int leftStart = (1920 / 2)  - (incomingLen / 2 * textLen);
+        DrawVertical();
+    }
+
+    public void DrawHorizontal()
+    {
+        int verticalPadding = 45;
+        int leftStart = (centerX) - (incomingLen / 2 * textLen);
 
         for (int i = 0; i < incomingLen; i++)
         {
             string byteLabel = $"|{(i + 1).ToString()}|";
-            int byteLabelLen = Raylib.MeasureText(byteLabel, 35) / 2;
             int xPos = leftStart + textLen * i;
-            Raylib.DrawText(incomingList[i], xPos, 1080 / 2, 35, Color.White);
-            Raylib.DrawText(byteLabel, xPos, 1080 / 2 - 45, 35, Color.White);
+            Raylib.DrawText(incomingList[i], xPos, centerY, fontSize, Color.White);
+            Raylib.DrawText(byteLabel, xPos, centerY - verticalPadding, fontSize, Color.White);
         }
+    }
+
+    public void DrawVertical()
+    {
+        int horizontalPadding = 20;
+        int yStart = 35 * incomingLen / 2;
+
+        for (int i = 0; i < incomingLen; i++)
+        {
+            string byteLabel = $"{(i + 1).ToString()}:";
+            int byteLabelLen = Raylib.MeasureText(byteLabel, fontSize);
+            int yPos = yStart + 35 * i;
+            Raylib.DrawText(incomingList[i], centerX - textLen / 2, yPos, fontSize, Color.White);
+            Raylib.DrawText(byteLabel, centerX - byteLabelLen - textLen - horizontalPadding, yPos, fontSize, Color.White);
+
+        }
+
     }
 
     public void NextScreen() {}
