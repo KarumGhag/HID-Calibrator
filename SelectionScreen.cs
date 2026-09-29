@@ -3,6 +3,7 @@ using HidSharp;
 using Raylib_cs;
 using Calibrator.Screens;
 using Calibrator.Devices;
+using Calibrator.ReadHidScreen;
 
 namespace Calibrator.SelectionScreen;
 
@@ -45,6 +46,7 @@ public class SelectDeviceScreen : Screen
         if (Raylib.IsKeyPressed(KeyboardKey.Right) || Raylib.IsKeyPressed(KeyboardKey.Down)) { selectedInt++; selectedInt %= deviceNames.Count; }
         if (Raylib.IsKeyPressed(KeyboardKey.Left) || Raylib.IsKeyPressed(KeyboardKey.Up)) { selectedInt--; if (selectedInt < 0) selectedInt = deviceNames.Count - 1; }
         selectedDevice = manager.deviceSet[selectedInt];
+        if (Raylib.IsKeyPressed(KeyboardKey.Enter)) NextScreen();
     }
 
     public void Draw()
@@ -57,5 +59,11 @@ public class SelectDeviceScreen : Screen
             Color colour = i == selectedInt ? Color.Green : Color.White;
             Raylib.DrawText(deviceNames[i], x, currentY, fontSize, colour);
         }
+    }
+
+    public void NextScreen()
+    {
+        manager.selectedDevice = selectedDevice;
+        nextScreen = new ReadInputScreen(selectedDevice);
     }
 }

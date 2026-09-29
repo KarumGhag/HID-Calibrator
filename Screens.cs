@@ -9,5 +9,6 @@ public interface Screen
 {
     void Update();
     void Draw();
+    void NextScreen();
     Screen? nextScreen { get; }
 }
