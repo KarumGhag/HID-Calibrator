@@ -13,6 +13,9 @@ public class ReadInputScreen : Screen
     HidDevice? selectedDevice;
 
     string? incoming;
+    string[] incomingList;
+    int incomingLen;
+
     HidStream stream;
 
     int textLen;
@@ -29,12 +32,10 @@ public class ReadInputScreen : Screen
             throw new("stream failed");
         }
 
-        int maxReportLength = selectedDevice.GetMaxInputReportLength();
-        string longestText = "";
-        for (int i = 0; i < maxReportLength; i++) longestText += "0";
-
-        textLen = Raylib.MeasureText(longestText, 35);
+        textLen = Raylib.MeasureText("  FF  ", 35);
     }
+
+//   FF       FF       FF       FF       FF       FF       FF       FF       FF       FF       FF
 
     public void Update()
     {
@@ -52,11 +53,23 @@ public class ReadInputScreen : Screen
             Console.WriteLine("timeout");
             return;
         }
+
+        incomingList = incoming.Split("-");
+        incomingLen = incomingList.Length;
     }
 
     public void Draw()
     {
-        Raylib.DrawText(incoming, 1920 / 2 - textLen, 1080 / 2, 35, Color.White);
+        int leftStart = (1920 / 2)  - (incomingLen / 2 * textLen);
+
+        for (int i = 0; i < incomingLen; i++)
+        {
+            string byteLabel = $"|{(i + 1).ToString()}|";
+            int byteLabelLen = Raylib.MeasureText(byteLabel, 35) / 2;
+            int xPos = leftStart + textLen * i;
+            Raylib.DrawText(incomingList[i], xPos, 1080 / 2, 35, Color.White);
+            Raylib.DrawText(byteLabel, xPos, 1080 / 2 - 45, 35, Color.White);
+        }
     }
 
     public void NextScreen() {}
